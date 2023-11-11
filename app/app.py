@@ -1,3 +1,16 @@
+import subprocess
+
+def install_requirements():
+    try:
+        subprocess.check_call(["pip", "install", "-r", "requirements.txt"])
+        print("Библиотеки успешно установлены.")
+    except subprocess.CalledProcessError as e:
+        print(f"Ошибка при установке библиотек: {e}")
+
+# Вызов функции для установки библиотек
+install_requirements()
+
+
 import pandas as pd
 import streamlit as st
 from mylib import *
