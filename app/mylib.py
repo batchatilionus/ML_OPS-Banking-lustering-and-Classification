@@ -12,7 +12,7 @@ def load_object(path:str):
     with open(path, 'rb') as f:
         return pickle.load(f)
 
-DF = load_dataset('../data/train_test/train.csv')
+DF = load_dataset('data/train_test/train.csv')
 sel_columns=['job','housing','loan','education','marital','default']
 all_columns=sel_columns+['age']
 
