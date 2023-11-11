@@ -110,7 +110,7 @@ if data_info:
 
 st.header('Ссылки')
 st.markdown("""
-- *GitHub*: https://github.com/batchatilionus
-- *Telegram*: https://t.me/batchatilion/ML_OPS-Banking-lustering-and-Classification
+- *GitHub*: https://github.com/batchatilionus/ML_OPS-Banking-lustering-and-Classification
+- *Telegram*: https://t.me/batchatilion
 - *LinkedIn*: https://www.linkedin.com/in/nikita-kuchko-249a4a290
 """)
