@@ -83,28 +83,28 @@ if clusters_info:
                 
     Ниже показано как классы клиентов расположены в итоговм трёхмерном пространстве, можно легко их разделить визуально. 
     """)
-    st.write(load_object('d:\\BankProject1\\app\\scatter3d.pkl'))
+    st.write(load_object('scatter3d.pkl'))
     st.markdown("""
                 
     Ниже представлена радиальная диаграмма средних значений для каждого признака внутри каждого кластера. Она помогает при анализе качества кластеризации и интерпритации полученных кластеров. 
     """)
-    st.write(load_object('d:\\BankProject1\\app\\final_polar_plot.pkl'))
+    st.write(load_object('final_polar_plot.pkl'))
 
 if model_info:
     st.header('Описание модели')
     st.markdown(""" 
     Ниже отрисована структура Решающего дерева, отвечающего за классификацию клиентов по выявленным классам. 
     """)
-    st.write(load_object('d:\\BankProject1\\app\\model_structure.pkl'))
+    st.write(load_object('model_structure.pkl'))
 
 if work_info:
     st.header('Описание проделанной работы')
-    with open('d:\\BankProject1\\app\\summary.txt', encoding="utf8") as f:
+    with open('summary.txt', encoding="utf8") as f:
         st.markdown(f.read())
 
 if data_info:
     st.header('Описание исходных данных')
-    with open('d:\\BankProject1\\app\\raw_data_description.txt', encoding="utf8") as f:
+    with open('raw_data_description.txt', encoding="utf8") as f:
         st.markdown(f.read())
 
 
