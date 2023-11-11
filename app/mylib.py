@@ -12,7 +12,7 @@ def load_object(path:str):
     with open(path, 'rb') as f:
         return pickle.load(f)
 
-DF = load_dataset('d:\\BankProject1\\data\\train_test\\train.csv')
+DF = load_dataset('../data/train_test/train.csv')
 sel_columns=['job','housing','loan','education','marital','default']
 all_columns=sel_columns+['age']
 
@@ -25,11 +25,11 @@ for col in sel_columns:
 main_columns=['loan','housing','job']
 numeric_subset=list(DF.select_dtypes(['float64','int64']).columns)
 categoric_subset=list(DF.select_dtypes('object').columns)
-encoder=load_object('d:\\BankProject1\\app\\encoder.pkl')
-scaler=load_object('d:\\BankProject1\\app\\scaler.pkl')
-knn_imputer=load_object('d:\\BankProject1\\app\\knn_imputer.pkl')
-pipe=load_object('d:\\BankProject1\\app\\knn_preproc8.pkl')
-model=load_object('d:\\BankProject1\\models\\model.pkl')
+encoder=load_object('encoder.pkl')
+scaler=load_object('scaler.pkl')
+knn_imputer=load_object('knn_imputer.pkl')
+pipe=load_object('knn_preproc8.pkl')
+model=load_object('model.pkl')
 
 
 def get_label_sym(label):
