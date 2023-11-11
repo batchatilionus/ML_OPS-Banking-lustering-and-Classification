@@ -1,4 +1,4 @@
-# ML_OPS-Banking-lustering-and-Classification
+# ML_OPS-Banking-Сlustering-and-Classification
 
 ЗАДАЧА: КЛАСТЕРИЗАЦИЯ КЛИЕНТОВ БАНКА НА 3-4 КЛАСТЕРА И 
         СОЗДАНИЕ ПРИЛОЖЕНИЯ С МОДЕЛЬЮ КЛАССИФИКАЦИИ КЛИЕНТОВ ПО 
