@@ -25,11 +25,11 @@ for col in sel_columns:
 main_columns=['loan','housing','job']
 numeric_subset=list(DF.select_dtypes(['float64','int64']).columns)
 categoric_subset=list(DF.select_dtypes('object').columns)
-encoder=load_object('encoder.pkl')
-scaler=load_object('scaler.pkl')
-knn_imputer=load_object('knn_imputer.pkl')
-pipe=load_object('knn_preproc8.pkl')
-model=load_object('model.pkl')
+encoder=load_object('app/encoder.pkl')
+scaler=load_object('app/scaler.pkl')
+knn_imputer=load_object('app/knn_imputer.pkl')
+pipe=load_object('app/knn_preproc8.pkl')
+model=load_object('app/model.pkl')
 
 
 def get_label_sym(label):
