@@ -3,52 +3,60 @@ import streamlit as st
 from mylib import *
 
 
-
 # оформление страницы
 st.title("ML Application 🤖")
 
-st.header('Классфификация клиента банка')
-st.markdown('Введите данные клиента, обязательно заполните 2 поля с 🚨 - они очень важны:')
+st.header('Классфификация клиента')
+st.markdown(
+    'Введите данные клиента, обязательно заполните 2 поля с 🚨 - они очень важны:')
 
 # секция ввода данных
-job = st.selectbox("***🚨Работа***",categs['job'] ,index=unknown_index['job'])
-housing = st.selectbox("***🚨Есть ли кредит на жильё***",categs['housing'],index=unknown_index['housing'])
-loan = st.selectbox("***🚨Есть ли непопогашенный кредит (не на жильё)***", categs['loan'],index=unknown_index['loan'])
-education = st.selectbox("Образование", categs['education'],index=unknown_index['education'])
-marital = st.selectbox("Семейное положение", categs['marital'],index=unknown_index['marital'])
-default = st.selectbox("Был ли отказ от выплаты кредита", categs['default'],index=unknown_index['default'])
-age = st.number_input(label="Возраст",min_value=18,max_value=100)
+job = st.selectbox("***🚨Работа***", categs['job'], index=unknown_index['job'])
+housing = st.selectbox("***🚨Есть ли кредит на жильё***",
+                       categs['housing'], index=unknown_index['housing'])
+loan = st.selectbox("***🚨Есть ли непопогашенный кредит (не на жильё)***",
+                    categs['loan'], index=unknown_index['loan'])
+education = st.selectbox(
+    "Образование", categs['education'], index=unknown_index['education'])
+marital = st.selectbox("Семейное положение",
+                       categs['marital'], index=unknown_index['marital'])
+default = st.selectbox("Был ли отказ от выплаты кредита",
+                       categs['default'], index=unknown_index['default'])
+age = st.number_input(label="Возраст", min_value=18, max_value=100)
 
 # вывод введённых данных
 st.markdown('Введённые данные:')
-client=pd.DataFrame(columns=all_columns)
-client.loc['Клиент']=[job,housing,loan,education,marital,default,age]
-st.dataframe(client,width=1500)
+client = pd.DataFrame(columns=all_columns)
+client.loc['Клиент'] = [job, housing, loan, education, marital, default, age]
+st.dataframe(client, width=1500)
 
 # обработка нажатия на кнопку, классификация
 if st.button('Классифицировать'):
-    if (job=='unknown')+(housing=='unknown')+(loan=='unknown')>1:
+    if (job == 'unknown')+(housing == 'unknown')+(loan == 'unknown') > 1:
         st.markdown('Введите минимум два поля с 🚨')
     else:
         # запуск алгоритма обработки пропусков и предобработки
-        mess, client_data, client_info=check_main_na(client)
+        mess, client_data, client_info = check_main_na(client)
 
         # вывод предобработанных данных
         st.markdown('Данные для модели:')
         st.markdown(mess)
-        st.dataframe(client_info,width=1500)
+        st.dataframe(client_info, width=1500)
         st.markdown('Данные, с которыми непосредственно работает модель:')
-        st.dataframe(client_data,width=1500)
+        st.dataframe(client_data, width=1500)
 
         # классфикация
-        label=model.predict(client_data[main_columns])[0]
+        label = model.predict(client_data[main_columns])[0]
         st.markdown('')
         st.markdown('')
-        st.markdown(f'***Модель опредилила данного клиента к классу {get_label_sym(label)}***')
-        st.markdown('Откройте раздел *Описание кластеров* для ознакомеления с описанием данного класса.')
+        st.markdown(
+            f'***Модель опредилила данного клиента к классу {get_label_sym(label)}***')
+        st.markdown(
+            'Откройте раздел *Описание кластеров* для ознакомеления с описанием данного класса.')
 
 else:
-    st.markdown('Заполните поля и нажмите на кнопку для выполения классификации.')
+    st.markdown(
+        'Заполните поля и нажмите на кнопку для выполения классификации.')
 
 
 # описание классов и данных
@@ -110,7 +118,7 @@ if data_info:
 
 st.header('Ссылки')
 st.markdown("""
-- *GitHub*: https://github.com/batchatilionus/ML_OPS-Banking-lustering-and-Classification
+- *GitHub*: https://github.com/batchatilionus
 - *Telegram*: https://t.me/batchatilion
 - *LinkedIn*: https://www.linkedin.com/in/nikita-kuchko-249a4a290
 """)
