@@ -105,6 +105,13 @@ if model_info:
     Ниже отрисована структура Решающего дерева, отвечающего за классификацию клиентов по выявленным классам. 
     """)
     st.write(load_object('app/source/model_structure.pkl'))
+    st.markdown('Метрики качества классификации:')
+    metrics = Image.open('app/source/confusion_matrix.png')
+    st.image(metrics)
+    st.markdown('Баланс классов:')
+    metrics = Image.open('app/source/class_balance.png')
+    st.image(metrics)
+    st.markdown('Модель Решаюшего дерева отлично справилась со несбалансированными классами.')
 
 if work_info:
     st.header('Описание проделанной работы')
