@@ -1,22 +1,21 @@
 stages:
-  - test
-
-variables:
-  CONDA_HOME: "/opt/conda"
-  CONDA_BIN: "${CONDA_HOME}/bin"
-  CONDA_PATH: "${CONDA_HOME}/envs/my_env"
+  - build
 
 before_script:
   - apt-get update -qy
-  - apt-get install -y wget bzip2
-  - wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
-  - /bin/bash miniconda.sh -b -p ${CONDA_HOME}
-  - rm miniconda.sh
-  - export PATH="${CONDA_BIN}:${PATH}"
-  - conda update -n base -c defaults conda
-  - conda env create -f environment.yml
-  - source activate my_env
+  - apt-get install -y python3-venv  # Install Python venv
+  - python3 -m venv venv
+  - source venv/bin/activate  # Activate the virtual environment
+  - wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh  # Download Miniconda installer
+  - bash miniconda.sh -b -p $HOME/miniconda  # Install Miniconda
+  - export PATH="$HOME/miniconda/bin:$PATH"
+  - hash -r  # Refresh bash session with updated PATH
+  - conda config --append channels conda-forge #add channel
+  - conda config --set always_yes true --set changeps1 false
 
-test:
-  stage: test
-
+build:
+  stage: build
+  script:
+    - conda env create -f environment.yml
+    - conda activate my_env
+    - python --version
