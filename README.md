@@ -1,4 +1,6 @@
-# ML_OPS-Banking-Сlustering-and-Classification
+## ML_OPS-Banking-Сlustering-and-Classification
+
+*conda env create -f environment.yml не работает на Linux*
 
 ЗАДАЧА: КЛАСТЕРИЗАЦИЯ КЛИЕНТОВ БАНКА НА 3-4 КЛАСТЕРА И 
         СОЗДАНИЕ ПРИЛОЖЕНИЯ С МОДЕЛЬЮ КЛАССИФИКАЦИИ КЛИЕНТОВ ПО 
