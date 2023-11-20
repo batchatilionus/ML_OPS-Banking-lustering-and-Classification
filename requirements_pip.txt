@@ -6,3 +6,4 @@ matplotlib==3.7.2
 numpy==1.25.2
 plotly==5.16.1
 kneed==0.8.5
+kaleido-python==0.2.1
