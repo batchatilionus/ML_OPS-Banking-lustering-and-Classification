@@ -1,4 +1,5 @@
 ## ML_OPS-Banking-Сlustering-and-Classification 🤖
+Ссылка на приложение: https://mlops-banking-lustering-and-classification-ctfmgy9g9amch2sunwj.streamlit.app/
 
 ***🔺 conda env create -f environment.yml не находит библиотеки в каналах для Linux - проблемы с GitLab***
 
