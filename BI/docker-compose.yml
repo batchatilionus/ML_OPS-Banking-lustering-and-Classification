@@ -1,0 +1,48 @@
+version: '3'
+
+services:
+  postgresBD:
+    image: postgres:14
+    container_name: postgresBD
+    environment:
+      POSTGRES_PASSWORD: postges_admin
+      POSTGRES_USER: postges_admin
+      POSTGRES_DB: TytPtostoBaza
+      POSTGRES_HOST_AUTH_METHOD: trust
+    volumes:
+      - postges_vol:/var/lib/postgresql/data
+
+  restore_db:
+    image: postgres:14
+    container_name: restore_db
+    command: ["bash", "-c", "sleep 10 && psql -h postgresBD -U postges_admin -d TytPtostoBaza < /backup/backup.sql"]
+    volumes:
+      - .:/backup
+    depends_on:
+      - postgresBD
+
+  unzip_data:
+    image: busybox
+    container_name: unzip_data
+    command: ["tar", "-xvf", "/backup/postgres_data.tar", "-C", "/var/lib/postgresql/data"]
+    volumes:
+      - postges_vol:/var/lib/postgresql/data
+    depends_on:
+      - postgresBD
+
+  superset_kuchko:
+    image: apache/superset
+    container_name: superset_kuchko
+    environment:
+      SUPERSET_SECRET_KEY: 'W182LSxE8iphf5M2CUhDz2h521m1ce61PAWgAs6/Xk8MsScCXZfSuyH'
+    ports:
+      - "8080:8088"
+    depends_on:
+      - postgresBD
+
+    command: ["sh", "-c", "superset fab create-admin --username admin --firstname Superset --lastname Admin --email admin@superset.com --password admin && superset db upgrade && superset init && gunicorn -b 0.0.0.0:8088 --reload 'superset.app:create_app()'" ]
+
+
+
+volumes:
+  postges_vol:
