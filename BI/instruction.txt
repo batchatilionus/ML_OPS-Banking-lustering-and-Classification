@@ -1,0 +1,5 @@
+1. docker-compose up
+2. http://localhost:8080 (login: admin, password: admin)
+3. В хедере раздел Dashboards -> в правом верхнем углу кнопка Import Dashboards (со значком "стрелка вниз")
+4. Выбрать файл dashboards.zip из этой папки (нужно ввести пароль от БД: postges_admin)
+5. открыть Dashboard "Portugal Bank Dataset"
